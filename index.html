@@ -4,27 +4,79 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        .tooltip {
-            width: 50px;
-            height: 50px;
-            background: transparent url(images/tooltipSprite.png) 0 0 no-repeat;
+        div, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        #trundle {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) -5px -45px no-repeat;
+        }
+         #trundle:hover {
+            background: transparent url(images/dark_tooltip.png) -48px -44px no-repeat;
+        }
+
+        #button {
             position: fixed; /* or absolute */
             top: 50%;
             left: 50%;
+            border-color: #000000;
+            border-style: solid;
+            border-radius: 4px;
+            background: #818181;
+            background: linear-gradient(to bottom, #777777, #434343); /* W3C */
+
         }
+
+        .menu {
+            position: relative;
+            display: table;
+        }
+        .menu p {
+            display: tab
+        }
+       
+        #icon_person {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) 0 0 no-repeat;
+        }
+
+        #icon_analytics {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) -44px 0 no-repeat;
+        }
+        #icon_star {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) 0 0 no-repeat;
+        }
+        /*
         .tooltip:hover:after {
-            width: 250px;
-            height: 50px;
-            background: transparent url(images/tooltipSprite.png) 0 -66px no-repeat;
+            width: 30px;
+            height: 30px;
+            background: transparent url(images/sprite.png) 0 -66px no-repeat;
             content: "";
             display: inline-block;
             position: relative;
             top: -83%;
             left: -90%;
         }
+        */
     </style>
 </head>
 <body>
-    <div class="tooltip"></div>
+    <div id="button">
+        <p id="trundle"></p>
+    </div>
+
+    <div class="menu">
+        <p id="icon_person"></p>
+        <p id="icon_analytics"></p>
+        <p id="icon_star"></p>
+    </div>
 </body>
 </html>
