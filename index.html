@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        div, p {
+        div, p, ul, li {
             margin: 0;
             padding: 0;
+        }
+        ul li {
+            list-style-type: none;
+        }
+        ul {
+            
+        }
+        a {
+            display: block;
+            cursor: pointer;
         }
 
         .tooltip {
@@ -28,14 +38,14 @@
 
         #button {
             position: relative;
-            left: 38px;
-            top: 20px;
+            left: 36px;
+            top: 4px;
             margin: 0 auto;
             border-color: #000000;
             border-style: solid;
             border-radius: 4px;
             background: #818181;
-            background: linear-gradient(to bottom, #777777, #434343); /* W3C */
+            background: linear-gradient(to bottom, #777777, #434343);
             border-width: 1px;
             display: inline-block;
         }
@@ -59,8 +69,8 @@
             position: absolute;
             width: 0;
             height: 0;
-            top: 35px;
-            left: 42px;
+            top: 34px;
+            left: 41px;
             box-sizing: border-box;
             border: 8px solid black;
             transform-origin: 0 0;
@@ -69,7 +79,7 @@
             z-index: -1;
         }
 
-        .menu p {
+        .menu .section{
             display: table-cell;
         }
        
@@ -116,8 +126,8 @@
         .triangle-down {
             height: 0;
             position: relative;
-            left: 43px;
-            top: -1px;
+            left: 42px;
+            top: -3px;
         }
         .triangle-down:after {
             content: "";
@@ -158,19 +168,25 @@
 </head>
 <body>
     <div class="tooltip">
-        <div>
+        
             <div id="button">
                 <p id="trundle"></p>
             </div>
-        </div>
-        <div class="menu">
-            <p id="icon_person"></p>
-            <p id="icon_analytics"></p>
-            <p id="icon_star"></p>
-            <div class="triangle-down">
-            </div>
+        
+        <ul class="menu">
+            <li class="section">
+                <a href="#menu1" id="icon_person"></a>
+            </li>
+            <li class="section">
+                <a href="#menu2" id="icon_analytics"></a>
+            </li>
+            <li class="section">
+                <a menu="#menu3"id="icon_star"></a>
+            </li>
+            <li class="triangle-down">
+            </li>
 
-        </div>
+        </ul>
     </div>
 </body>
 </html>
