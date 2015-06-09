@@ -11,13 +11,9 @@
         ul li {
             list-style-type: none;
         }
-        ul {
-            
-        }
         a {
             display: block;
             cursor: pointer;
-
         }
 
         a:hover, a:visited, a:link, a:active {
@@ -38,7 +34,6 @@
             height: 35px;
             background: transparent url(images/dark_tooltip.png) -5px -45px no-repeat;
         }
-
          #trundle:hover {
             background: transparent url(images/dark_tooltip.png) -48px -44px no-repeat;
         }
@@ -76,6 +71,10 @@
         .tooltip:hover .menu {
             display: block;
             opacity: 1;
+            -webkit-transition-duration: 300ms;
+            -moz-transition-duration: 300ms;
+            -o-transition-duration: 300ms;
+            transition-timing-function: ease-in-out;
         }
         .menu::after {
             content: "";
@@ -98,26 +97,7 @@
         .section:hover{
             background: linear-gradient(to bottom, #2b2b2b, #3a3a3a);
         }
-        .section.person:hover {
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            border-left-style: solid;
-            border-right-style: solid;
-            border-top-style: solid;
-            border-bottom-style: solid;
-            border-right-color: #2f2f2f;
-            /*border-width: 1px;*/
-        }
-        
-        
-        #icon_analytics:hover .triangle-down {
-            border-top: 10px solid #262626;
-        }
-       
-        #icon_person {
-            width: 35px;
-            height: 35px;
-            background: transparent url(images/dark_tooltip.png) -4px -4px no-repeat;
+        .section.person {
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
             border-left-style: solid;
@@ -127,11 +107,8 @@
             border-right-color: #2f2f2f;
             border-width: 1px;
         }
-
-        #icon_analytics {
-            width: 35px;
-            height: 35px;
-            background: transparent url(images/dark_tooltip.png) -46px -4px no-repeat;
+        
+        .section.analytics {
             border-top-style: solid;
             border-bottom-style: solid;
             border-width: 1px;
@@ -139,11 +116,49 @@
             border-right-style: none;
             border-left-color: #2f2f2f;
         }
+        
+        .section.star {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-right-style: solid;
+            border-bottom-style: solid;
+            border-top-style: solid;
+            border-left-style: solid;
+            border-left-color: #2f2f2f;
+            border-width: 1px;
+        }
+        .triangle-hover.triangle-down:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #393939;
+        }
+        /*
+        #icon_analytics:hover .triangle-down {
+            border-top: 10px solid #262626;
+        }
+        */
+       
+        #icon_person {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) -4px -4px no-repeat;
+        }
+
+        #icon_analytics {
+            width: 35px;
+            height: 35px;
+            background: transparent url(images/dark_tooltip.png) -46px -4px no-repeat;
+        }
         .triangle-down {
             height: 0;
             position: relative;
             left: 42px;
             top: -3px;
+
         }
         .triangle-down:after {
             content: "";
@@ -155,20 +170,27 @@
             border-top: 10px solid #444444;
 
         }
+
         #icon_star {
             width: 35px;
             height: 35px;
             background: transparent url(images/dark_tooltip.png) -90px -4px no-repeat;
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-            border-right-style: solid;
-            border-bottom-style: solid;
-            border-top-style: solid;
-            border-left-style: solid;
-            border-left-color: #2f2f2f;
-            border-width: 1px;
         }
     </style>
+    <script type="text/javascript">
+        function makeTriangleHover() {
+            var elements = document.getElementsByClassName('triangle-down');
+            var elementTriangle = elements[0];
+            elementTriangle.className = "triangle-down triangle-hover";
+        };
+
+        function removeTriangleHover() {
+            var elements = document.getElementsByClassName('triangle-hover');
+            var elementTriangle = elements[0];
+            elementTriangle.className = "triangle-down";
+        };
+
+    </script>
 </head>
 <body>
     <!--container-->
@@ -181,7 +203,7 @@
             <li class="section person">
                 <a href="#menu1" id="icon_person"></a>
             </li>
-            <li class="section analytics">
+            <li class="section analytics" onmouseover="makeTriangleHover()" onmouseout="removeTriangleHover()">
                 <a href="#menu2" id="icon_analytics"></a>
             </li>
             <li class="section star">
