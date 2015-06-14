@@ -11,9 +11,12 @@
         ul li {
             list-style-type: none;
         }
-        a {
+        a, button {
             display: block;
             cursor: pointer;
+        }
+        button {
+            border: none;
         }
         a:hover, a:visited, a:link, a:active {
             text-decoration: none;
@@ -61,7 +64,7 @@
             margin: 0 auto;
             background: #818181;
             background: linear-gradient(to bottom, #777777, #434343);
-            top: -85px;
+            top: -81px;
             border-radius: 4px;
             box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
             -webkit-transition-duration: 300ms;
@@ -70,7 +73,6 @@
             transition-timing-function: ease-in-out;
         }
         .tooltip:hover .menu, .tooltip:hover .triangle-shadow {
-            display: block;
             opacity: 1;
         }
 
@@ -171,33 +173,20 @@
         }
        
     </style>
-    <script type="text/javascript">
-        function makeTriangleHover() {
-            var elements = document.getElementsByClassName('triangle-down');
-            var elementTriangle = elements[0];
-            elementTriangle.className = "triangle-down triangle-hover";
-        };
-
-        function removeTriangleHover() {
-            var elements = document.getElementsByClassName('triangle-hover');
-            var elementTriangle = elements[0];
-            elementTriangle.className = "triangle-down";
-        };
-
-    </script>
+    
 </head>
 <body>
     <!--container-->
     <div class="tooltip">
         <div id="button">
-            <p id="trundle"></p>
+            <button id="trundle"></button>
         </div>
         
         <ul class="menu">
             <li class="section person">
                 <a href="#menu1" id="icon_person"></a>
             </li>
-            <li class="section analytics" onmouseover="makeTriangleHover()" onmouseout="removeTriangleHover()">
+            <li class="section analytics">
                 <a href="#menu2" id="icon_analytics"></a>
             </li>
             <li class="section star">
@@ -206,8 +195,26 @@
             <li class="triangle-down">
             </li>
         </ul>
-        <div class="triangle-shadow">
-        </div>
+        <div class="triangle-shadow"></div>
     </div>
 </body>
+<script type="text/javascript">
+        var el = document.querySelector('.analytics');
+
+        if (el != null) {
+            
+            el.addEventListener("mouseover", makeTriangleHover, false);
+            el.addEventListener('mouseout', removeTriangleHover, false);
+
+            var elTriangle = document.querySelector(".triangle-down");
+
+            function makeTriangleHover() {
+                elTriangle.className = "triangle-down triangle-hover";
+            };
+
+            function removeTriangleHover() {
+                elTriangle.className = "triangle-down";
+            };
+        };
+    </script>
 </html>
