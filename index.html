@@ -37,10 +37,10 @@
             background: transparent url(images/dark_tooltip.png) -5px -45px no-repeat;
         }
          #trundle:hover {
-            background: transparent url(images/dark_tooltip.png) -48px -44px no-repeat;
+            background: transparent url(images/dark_tooltip.png) -48px -45px no-repeat;
         }
 
-        #button {
+        .button {
             position: relative;
             left: 36px;
             top: 4px;
@@ -54,57 +54,46 @@
             display: inline-block;
             box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
         }
-        #button:hover {
+        .button:hover {
             background: linear-gradient(to bottom, #2b2b2b, #3a3a3a); /* W3C */
         }
 
-        .tooltip .menu {
-            position: relative;
+         .menu {
+            position: absolute;
             opacity: 0;
             margin: 0 auto;
             background: #818181;
             background: linear-gradient(to bottom, #777777, #434343);
-            top: -81px;
+            top: -32px;
             border-radius: 4px;
             box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
-            -webkit-transition-duration: 300ms;
-            -moz-transition-duration: 300ms;
-            -o-transition-duration: 300ms;
-            transition-timing-function: ease-in-out;
         }
-        .tooltip:hover .menu, .tooltip:hover .container-shadow {
+        .tooltip:hover .menu, .tooltip:hover .triangle-shadow:after {
             opacity: 1;
+            transition: opacity .2s;
         }
-        .container-shadow {
-            height: 15px;
+        .triangle-shadow {
+            position: relative;
+            left: 44px;
+            top: -106px;
+            width: 19px;
+            height: 10px;
             overflow: hidden;
-            width: 24px;
-            position: absolute;
-            z-index: -1;
-            top: -1px;
-            left: 41px;
-            opacity: 0;
-            margin-top: 2px;
-            -webkit-transition-duration: 400ms;
-            -moz-transition-duration: 400ms;
-            -o-transition-duration: 400ms;
-            transition-timing-function: ease-in-out;
+            
         }
 
-        .triangle-shadow {
-            width: 0;
-            height: 0;
-            box-sizing: border-box;
-            border: 8px solid #444444;
-            transform-origin: 0 0;
-            transform: rotate(-45deg);
-            box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.4);
-            -webkit-transition-duration: 300ms;
-            -moz-transition-duration: 300ms;
-            -o-transition-duration: 300ms;
-            transition-timing-function: ease-in-out;
-            
-            
+        .triangle-shadow:after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            background: #444444;
+            display: inline-block;
+            position: relative;
+            top: -10px;
+            left: 5px;
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+            opacity: 0;
         }
         .menu .section{
             display: table-cell;
@@ -126,10 +115,10 @@
         .section.analytics {
             border-top-style: solid;
             border-bottom-style: solid;
-            border-width: 1px;
             border-left-style: none;
             border-right-style: none;
             border-left-color: #2f2f2f;
+            border-width: 1px;
         }
         .section.star {
             border-top-right-radius: 4px;
@@ -142,6 +131,7 @@
             border-width: 1px;
         }
 
+        /*
         .triangle-hover.triangle-down:after {
             content: "";
             display: block;
@@ -152,6 +142,7 @@
             border-top: 10px solid #393939;
             
         }
+        */
 
         #icon_person {
             width: 35px;
@@ -183,17 +174,22 @@
             border-right: 10px solid transparent;
             border-top: 10px solid #444444;
         }
-       
+        .area {
+            width: 100px;
+            height: 100px;
+        }
+
     </style>
     
 </head>
 <body>
     <!--container-->
     <div class="tooltip">
-        <div id="button">
-            <button id="trundle"></button>
+        <div class="area">
+            <div class="button">
+                <button id="trundle"></button>
+            </div>
         </div>
-        
         <ul class="menu">
             <li class="section person">
                 <a href="#menu1" id="icon_person"></a>
@@ -204,18 +200,15 @@
             <li class="section star">
                 <a href="#menu3"id="icon_star"></a>
             </li>
-            <li class="triangle-down">
-            </li>
         </ul>
-        <div class="container-shadow">
-            <div class="triangle-shadow"></div>
-        </div>
+        <div class="triangle-shadow"></div>
     </div>
 </body>
 <script type="text/javascript">
         var el = document.querySelector('.analytics');
 
         if (el != null) {
+
             
             el.addEventListener("mouseover", makeTriangleHover, false);
             el.addEventListener('mouseout', removeTriangleHover, false);
