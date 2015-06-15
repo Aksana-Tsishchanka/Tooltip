@@ -58,28 +58,31 @@
             background: linear-gradient(to bottom, #2b2b2b, #3a3a3a); /* W3C */
         }
 
-         .menu {
+        .menu {
             position: absolute;
             opacity: 0;
             margin: 0 auto;
             background: #818181;
             background: linear-gradient(to bottom, #777777, #434343);
-            top: -32px;
+            top: -30px;
             border-radius: 4px;
             box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
+            display: none;
         }
-        .tooltip:hover .menu, .tooltip:hover .triangle-shadow:after {
+        .area:hover+.menu, .menu:hover {
+            display: block;
             opacity: 1;
-            transition: opacity .2s;
+            transition: opacity 4s;
         }
+
         .triangle-shadow {
-            position: relative;
-            left: 44px;
-            top: -106px;
-            width: 19px;
-            height: 10px;
+            position: absolute;
+            left: 43px;
+            top: 35px;
+            width: 41px;
+            height: 19px;
             overflow: hidden;
-            
+                        
         }
 
         .triangle-shadow:after {
@@ -90,10 +93,9 @@
             background: #444444;
             display: inline-block;
             position: relative;
-            top: -10px;
+            top: -8px;
             left: 5px;
             box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
-            opacity: 0;
         }
         .menu .section{
             display: table-cell;
@@ -131,19 +133,6 @@
             border-width: 1px;
         }
 
-        /*
-        .triangle-hover.triangle-down:after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #393939;
-            
-        }
-        */
-
         #icon_person {
             width: 35px;
             height: 35px;
@@ -175,8 +164,9 @@
             border-top: 10px solid #444444;
         }
         .area {
-            width: 100px;
-            height: 100px;
+            width: 109px;
+            height: 45px;
+            border: solid 1px red;
         }
 
     </style>
@@ -200,15 +190,15 @@
             <li class="section star">
                 <a href="#menu3"id="icon_star"></a>
             </li>
+            <li class="triangle-shadow"></li>
         </ul>
-        <div class="triangle-shadow"></div>
+        
     </div>
 </body>
 <script type="text/javascript">
         var el = document.querySelector('.analytics');
 
         if (el != null) {
-
             
             el.addEventListener("mouseover", makeTriangleHover, false);
             el.addEventListener('mouseout', removeTriangleHover, false);
