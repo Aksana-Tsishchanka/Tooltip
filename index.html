@@ -96,10 +96,12 @@
         }
 
         .triangle-shadow:after {
-            content: '';
+            content: "";
             width: 10px;
             height: 10px;
             transform: rotate(45deg);
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            -ms-transform: rotate(7deg); /* IE 9 */
             background: #444444;
             display: inline-block;
             position: relative;
