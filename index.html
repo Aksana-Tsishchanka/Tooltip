@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        div, p, ul, li {
+        .tooltip, .menu li {
             margin: 0;
             padding: 0;
         }
-        ul li {
+
+        .menu li {
             list-style-type: none;
         }
-        a, button {
+        a, .trundle {
             display: block;
             cursor: pointer;
         }
-        button {
+        .trundle {
             border: none;
         }
         a:hover, a:visited, a:link, a:active {
@@ -28,7 +29,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding-top: 10px;
         }
 
         .trundle {
@@ -63,35 +63,28 @@
             margin: 0 auto;
             background: #818181;
             background: linear-gradient(to bottom, #777777, #434343);
-            top: -30px;
+            top: -42px;
             border-radius: 4px;
             box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
-            display: none;
+            0% display:none ; opacity: 0;
+            margin: 0;
+            padding: 0;
         }
 
-        .area_button:hover+.menu, .menu:hover {
+        .tooltip:hover .menu, .menu:hover {
+            margin: 0;
             display: block;
-            -webkit-animation-duration: 2s;
-            -webkit-animation-name: fadeInFromNone; /* Chrome, Safari, Opera */
-            -moz-animation-name: fadeInFromNone;
+            1% display: block ; opacity: 0;
+            100% display: block ; opacity: 1;
+            -webkit-transition: opacity 1s ease-in-out;
+            -webkit-transition-delay: 0.2s;
+
+            -moz-transition: opacity 1s ease-in-out;
+            -moz-transition-delay: 0.2s;
+
+            transition: opacity 1s ease-in-out;
+            transition-delay: 0.2s;
         }
-        @-webkit-keyframes fadeInFromNone {
-            0% {
-                display:none; 
-                opacity: 0;
-            }
-
-            1% {
-                display: block ; 
-                opacity: 0;
-            }
-
-            100% {
-                display: block ; 
-                opacity: 1;
-            }
-        }
-
         .triangle-shadow {
             position: absolute;
             left: 43px;
@@ -174,22 +167,14 @@
             left: 42px;
             top: -3px;
         }
-        .area_button {
-            width: 109px;
-            height: 45px;
-            position: absolute; /* ?*/
-        }
-
     </style>
     
 </head>
 <body>
     <div class="tooltip">
-        <div class="area_button">
             <div class="button">
                 <button class="trundle"></button>
             </div>
-        </div>
 
         <ul class="menu">
             <li class="section person">
@@ -205,23 +190,4 @@
         </ul>  
     </div>
 </body>
-<script type="text/javascript">
-        var el = document.querySelector('.analytics');
-
-        if (el != null) {
-            
-            el.addEventListener("mouseover", makeTriangleHover, false);
-            el.addEventListener('mouseout', removeTriangleHover, false);
-
-            var elTriangle = document.querySelector(".triangle-down");
-
-            function makeTriangleHover() {
-                elTriangle.className = "triangle-down triangle-hover";
-            };
-
-            function removeTriangleHover() {
-                elTriangle.className = "triangle-down";
-            };
-        };
-    </script>
 </html>
